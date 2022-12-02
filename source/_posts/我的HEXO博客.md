@@ -38,9 +38,9 @@ hexo help             # 帮助
 git config --global user.name "ptshu"
 git config --global user.email "zskang@qq.com"
 第一次关联仓库
-git remote add origin https://ghp_W42ArMmNdN9PROqD2ZAF和谐一下RaWXGwCyiY0l95jI@github.com/ptshu/hexo.git
+git remote add origin https://ghp_YtdiutIzUSJw1aBftZmD和谐一下TGBQROg3Rh3pLH24@github.com/ptshu/hexo.git
 或修改关联仓库
-git remote set-url origin https://ghp_W42ArMmNdN9PROqD2ZAF和谐一下RaWXGwCyiY0l95jI@github.com/ptshu/hexo.git
+git remote set-url origin https://ghp_YtdiutIzUSJw1aBftZmD和谐一下TGBQROg3Rh3pLH24@github.com/ptshu/hexo.git
 
 上传命令：
 git add .
@@ -54,7 +54,8 @@ git config -l
 
 #  github用户申请专属token(个人令牌)
 Settings => Developer Settings => Personal access tokens
-如：ghp_W42ArMmNdN9PROqD2ZAF和谐一下RaWXGwCyiY0l95jI
+如：ghp_YtdiutIzUSJw1aBftZmD和谐一下TGBQROg3Rh3pLH24
+
 
 #  Github添加密匙：
 
