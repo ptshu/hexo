@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>node_modules瘦身方法 | 菩提树 - ptshucn.gitee.io</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="菩提的个人小站">
+  
+  
+    <meta name="keywords" content="菩提,pt">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="菩提树" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">菩提树</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">ptshucn.gitee.io</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+          <a class="main-nav-link" href="/atom.xml"><i class="fa fa-rss"></i> 订阅</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-node-modules瘦身方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      node_modules瘦身方法
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-08-19T12:25:00.000Z" itemprop="datePublished">2022年08月19日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/Github%E4%BD%BF%E7%94%A8/">Github使用</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/08/19/node-modules%E7%98%A6%E8%BA%AB%E6%96%B9%E6%B3%95/#comments" class="article-comment-link">
+  
+    
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/08/19/node-modules%E7%98%A6%E8%BA%AB%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>首先，说明下node_modules文件夹的作用：下载了npm或gulp的一些插件后，打开node_modules可以发现，里面有很多的文件夹，会导致我们将项目拷贝给别人的时候，传输速度会很慢。在拷贝给别人项目的时候，node_modules这个文件夹是不需要一起拷贝的，因为有package.json、package-lock.json。</p>
+<span id="more"></span>
+<p>package.json记录当前项目所依赖模块的版本信息，更新模块时锁定模块的大版本号（版本号的第一位）。package-lock.json记录了node_modules目录下所有模块的具体来源和版本号以及其他的信息，就不做详细讲解了（相信写代码的一看就能大概明白），也可以参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34295211/article/details/103858589">https://blog.csdn.net/qq_34295211/article/details/103858589</a><br>详细步骤如下：(初次尝试时 请先备份！请先备份！请先备份！)<br>npm install rimraf -g   		&#x2F;&#x2F;安装rimraf工具<br>rimraf node_modules     		&#x2F;&#x2F;使用rimraf删除node_modules文件<br>npm cache clean –force		&#x2F;&#x2F;清除缓存<br>npm config set registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a>	&#x2F;&#x2F;设置国内镜像，防止下载缓慢卡住<br>npm  install			&#x2F;&#x2F;初始化项目</p>
+<p>每次上传项目至服务器备份时，删除node_modules文件夹，要修改项目时再重新初始化项目，安装依赖包。</p>
+<p>另外，npm prune 命令的功能是根据package.json里的依赖项，删除不需要的模块文件。<br>执行npm audit fix，可以查看是否少了什么组件</p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="https://ptshucn.gitee.io/2022/08/19/node-modules瘦身方法/">https://ptshucn.gitee.io/2022/08/19/node-modules瘦身方法/</a></p>
+              <p>版权声明: 转载请注明出处。</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/css/images/wechat-pay.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/css/images/alipay-pay.jpg">
+                </div>
+            </div>
+            <p class="reward-desc">扫码打赏，感谢支持</p>
+        </div>
+    </div>
+
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/08/16/HEXO%E6%B7%BB%E5%8A%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          HEXO添加置顶功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/19/Github%E4%B8%8EGitee%E7%9A%84%E8%BF%9E%E6%8E%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Github与Gitee的连接
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+  <section id="comments" class="vcomment"></section>
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/19/Github%E4%B8%8EGitee%E7%9A%84%E8%BF%9E%E6%8E%A5/">Github与Gitee的连接</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/19/node-modules%E7%98%A6%E8%BA%AB%E6%96%B9%E6%B3%95/">node_modules瘦身方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/16/HEXO%E6%B7%BB%E5%8A%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/">HEXO添加置顶功能</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/08/Hexo+Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Hexo+Github搭建博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/08/%E6%88%91%E7%9A%84%E5%9F%9F%E5%90%8D/">我的域名</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">搭建</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Github%E4%BD%BF%E7%94%A8/">Github使用</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i> 友情链接</h3>
+    <div class="widget">
+      <ul>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="http://www.ptshu.cn/">ptshu.cn</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://console.leancloud.cn/">valine（leancloud）</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://github.com/ptshu">菩提树(github)</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://gitee.com/ptshucn/ptshucn">菩提树(gitee)</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://szfilehelper.weixin.qq.com/">微信文件传输</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 菩提树.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+    <script>
+      var GUEST_INFO = ['nick','mail','link'];
+      var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+      });
+      var notify = 'false' == true;
+      var verify = 'false' == true;
+      new Valine({
+          el: '.vcomment',
+          notify: notify,
+          verify: verify,
+          appId: "pITigP0WC137LRx9QIDo9n4M-gzGzoHsz",
+          appKey: "uagpOLmhikX8vQLMnwB0wsxC",
+          placeholder: "Just go go",
+          pageSize:'10',
+          avatar:'mm',
+          lang:'zh-cn'
+      });
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>

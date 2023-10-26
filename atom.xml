@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>菩提树</title>
+  
+  <subtitle>ptshucn.gitee.io</subtitle>
+  <link href="https://ptshucn.gitee.io/atom.xml" rel="self"/>
+  
+  <link href="https://ptshucn.gitee.io/"/>
+  <updated>2022-08-19T13:41:17.796Z</updated>
+  <id>https://ptshucn.gitee.io/</id>
+  
+  <author>
+    <name>菩提</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github与Gitee的连接</title>
+    <link href="https://ptshucn.gitee.io/2022/08/19/Github%E4%B8%8EGitee%E7%9A%84%E8%BF%9E%E6%8E%A5/"/>
+    <id>https://ptshucn.gitee.io/2022/08/19/Github%E4%B8%8EGitee%E7%9A%84%E8%BF%9E%E6%8E%A5/</id>
+    <published>2022-08-19T13:39:46.000Z</published>
+    <updated>2022-08-19T13:41:17.796Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="连接-Github"><a href="#连接-Github" class="headerlink" title="连接 Github"></a>连接 Github</h1><p>右键 -&gt; Git Bash Here，设置用户名和邮箱：<br>git config –global user.name “GitHub 用户名”<br>git config –global user.email “GitHub 邮箱”<br>创建 SSH 密匙：<br>输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。</p><span id="more"></span><p>添加密匙：</p><p>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。</p><p>登陆 GitHub ，进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。</p><p>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。</p><p>验证连接：</p><p>打开 Git Bash，输入 ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a> 出现 “Are you sure……”，输入 yes 回车确认。</p><p>显示 “Hi xxx! You’ve successfully……” 即连接成功。</p><h1 id="连接-Gitee"><a href="#连接-Gitee" class="headerlink" title="连接 Gitee"></a>连接 Gitee</h1><p>修改根目录_config.yml配置<br>deploy:<br>type: git<br>repo: <a href="https://gitee.com/ptshucn/ptshucn.git">https://gitee.com/ptshucn/ptshucn.git</a> （将地址换成自己的地址）<br>branch: master</p><p>然后在blog的根目录执行命令：</p><p>npm install hexo-deployer-git –save # 安装git插件</p><p>git config –global user.email <a href="mailto:&#122;&#x73;&#107;&#97;&#110;&#x67;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;">&#122;&#x73;&#107;&#97;&#110;&#x67;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;</a> # 设置gitee邮箱（gitee的注册邮箱）</p><p>git config –global user.name ‘ptshucn’ # 设置用户名（git的注册昵称）</p><p>hexo deploy # 上传到gitee</p><p>然后选择gitee pages服务，然后选择开启 或 更新即可。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;连接-Github&quot;&gt;&lt;a href=&quot;#连接-Github&quot; class=&quot;headerlink&quot; title=&quot;连接 Github&quot;&gt;&lt;/a&gt;连接 Github&lt;/h1&gt;&lt;p&gt;右键 -&amp;gt; Git Bash Here，设置用户名和邮箱：&lt;br&gt;git config –global user.name “GitHub 用户名”&lt;br&gt;git config –global user.email “GitHub 邮箱”&lt;br&gt;创建 SSH 密匙：&lt;br&gt;输入 ssh-keygen -t rsa -C “GitHub 邮箱”，然后一路回车。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Github使用" scheme="https://ptshucn.gitee.io/categories/Github%E4%BD%BF%E7%94%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>node_modules瘦身方法</title>
+    <link href="https://ptshucn.gitee.io/2022/08/19/node-modules%E7%98%A6%E8%BA%AB%E6%96%B9%E6%B3%95/"/>
+    <id>https://ptshucn.gitee.io/2022/08/19/node-modules%E7%98%A6%E8%BA%AB%E6%96%B9%E6%B3%95/</id>
+    <published>2022-08-19T12:25:00.000Z</published>
+    <updated>2022-08-19T12:26:46.199Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先，说明下node_modules文件夹的作用：下载了npm或gulp的一些插件后，打开node_modules可以发现，里面有很多的文件夹，会导致我们将项目拷贝给别人的时候，传输速度会很慢。在拷贝给别人项目的时候，node_modules这个文件夹是不需要一起拷贝的，因为有package.json、package-lock.json。</p><span id="more"></span><p>package.json记录当前项目所依赖模块的版本信息，更新模块时锁定模块的大版本号（版本号的第一位）。package-lock.json记录了node_modules目录下所有模块的具体来源和版本号以及其他的信息，就不做详细讲解了（相信写代码的一看就能大概明白），也可以参考：<a href="https://blog.csdn.net/qq_34295211/article/details/103858589">https://blog.csdn.net/qq_34295211/article/details/103858589</a><br>详细步骤如下：(初次尝试时 请先备份！请先备份！请先备份！)<br>npm install rimraf -g   &#x2F;&#x2F;安装rimraf工具<br>rimraf node_modules     &#x2F;&#x2F;使用rimraf删除node_modules文件<br>npm cache clean –force&#x2F;&#x2F;清除缓存<br>npm config set registry <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a>&#x2F;&#x2F;设置国内镜像，防止下载缓慢卡住<br>npm  install&#x2F;&#x2F;初始化项目</p><p>每次上传项目至服务器备份时，删除node_modules文件夹，要修改项目时再重新初始化项目，安装依赖包。</p><p>另外，npm prune 命令的功能是根据package.json里的依赖项，删除不需要的模块文件。<br>执行npm audit fix，可以查看是否少了什么组件</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;首先，说明下node_modules文件夹的作用：下载了npm或gulp的一些插件后，打开node_modules可以发现，里面有很多的文件夹，会导致我们将项目拷贝给别人的时候，传输速度会很慢。在拷贝给别人项目的时候，node_modules这个文件夹是不需要一起拷贝的，因为有package.json、package-lock.json。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Github使用" scheme="https://ptshucn.gitee.io/categories/Github%E4%BD%BF%E7%94%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HEXO添加置顶功能</title>
+    <link href="https://ptshucn.gitee.io/2022/08/16/HEXO%E6%B7%BB%E5%8A%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/"/>
+    <id>https://ptshucn.gitee.io/2022/08/16/HEXO%E6%B7%BB%E5%8A%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/</id>
+    <published>2022-08-16T12:47:59.000Z</published>
+    <updated>2022-08-16T12:56:16.368Z</updated>
+    
+    <content type="html"><![CDATA[<p>目前已经有修改后支持置顶的仓库，可以直接用以下命令安装。(cmd 到博客根目录，nmp运行)<br>$ npm uninstall hexo-generator-index<br>$ npm install hexo-generator-index-pin-top<br>然后在需要置顶的文章的Front-matter中加上top: true即可。</p><span id="more"></span><h2 id="比如下面这篇文章："><a href="#比如下面这篇文章：" class="headerlink" title="比如下面这篇文章："></a>比如下面这篇文章：</h2><p>title: hexo+GitHub博客搭建实战<br>date: 2017-09-08 12:00:25<br>categories: 博客搭建系列<br>top: true</p><hr><p>到目前为止，置顶功能已经可以实现了。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;目前已经有修改后支持置顶的仓库，可以直接用以下命令安装。(cmd 到博客根目录，nmp运行)&lt;br&gt;$ npm uninstall hexo-generator-index&lt;br&gt;$ npm install hexo-generator-index-pin-top&lt;br&gt;然后在需要置顶的文章的Front-matter中加上top: true即可。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Github使用" scheme="https://ptshucn.gitee.io/categories/Github%E4%BD%BF%E7%94%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Github搭建博客</title>
+    <link href="https://ptshucn.gitee.io/2022/08/08/Hexo+Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://ptshucn.gitee.io/2022/08/08/Hexo+Github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2022-08-08T12:03:03.000Z</published>
+    <updated>2022-08-19T07:57:48.401Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用Hexo-Github搭建博客"><a href="#使用Hexo-Github搭建博客" class="headerlink" title="使用Hexo+Github搭建博客"></a>使用Hexo+Github搭建博客</h1><p>使用 Hexo+GitHub 搭建个人免费博客教程（小白向）<br><a href="https://zhuanlan.zhihu.com/p/60578464">https://zhuanlan.zhihu.com/p/60578464</a></p><h1 id="hexo常用命令"><a href="#hexo常用命令" class="headerlink" title="hexo常用命令"></a>hexo常用命令</h1><p>hexo new “name”       # 新建文章<br>hexo new page “name”  # 新建页面<br>hexo g                # 生成页面<br>hexo d                # 部署<br>hexo g -d             # 生成页面并部署<br>hexo s                # 本地预览<br>hexo clean            # 清除缓存和已生成的静态文件<br>hexo help             # 帮助</p><span id="more"></span><h1 id="文件夹目录说明："><a href="#文件夹目录说明：" class="headerlink" title="文件夹目录说明："></a>文件夹目录说明：</h1><p>node_modules: 依赖包<br>public：存放生成的页面<br>scaffolds：生成文章的一些模板<br>source：用来存放你的文章<br>themes：主题<br>** _config.yml: 博客的配置文件**</p><h1 id="教程2：连接github的命令"><a href="#教程2：连接github的命令" class="headerlink" title="教程2：连接github的命令"></a>教程2：连接github的命令</h1><p>git config –global user.name “ptshu”<br>git config –global user.email “<a href="mailto:&#x7a;&#x73;&#107;&#x61;&#x6e;&#103;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#x7a;&#x73;&#107;&#x61;&#x6e;&#103;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a>“<br>输入 ssh-keygen -t rsa -C “<a href="mailto:&#122;&#x73;&#x6b;&#x61;&#110;&#x67;&#64;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;">&#122;&#x73;&#x6b;&#x61;&#110;&#x67;&#64;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;</a>“，然后一路回车。</p><p>报错信息hexo YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key<br>报错信息是提示hexo的yml配置文件 冒号后面少了空格<br>解决方案：到提示行将对应的空格补上即可<br><a href="https://blog.csdn.net/qq_39026548/article/details/104729964">https://blog.csdn.net/qq_39026548/article/details/104729964</a></p><h1 id="教程3：添加分类及标签"><a href="#教程3：添加分类及标签" class="headerlink" title="教程3：添加分类及标签"></a>教程3：添加分类及标签</h1><p>Hexo使用攻略-添加分类及标签<br><a href="https://www.jianshu.com/p/e17711e44e00">https://www.jianshu.com/p/e17711e44e00</a></p><h1 id="首字母大小写而-404"><a href="#首字母大小写而-404" class="headerlink" title="首字母大小写而 404"></a>首字母大小写而 404</h1><p>Hexo 改变 tag 因为大小写问题而 404 的解决方法<br><a href="https://blog.zhheo.com/p/5511910d.html">https://blog.zhheo.com/p/5511910d.html</a><br>hexo d 上传后about首字母变大写的原因：第一次上传时是大写，覆盖上传还就按第一次的大写写入。解决方法：把文件夹about重命名为其他（如：about2），hexo d 上传，然后再重命名回about，再hexo d 上传就完美解决了。</p><h1 id="评论系统-Valine"><a href="#评论系统-Valine" class="headerlink" title="评论系统-Valine"></a>评论系统-Valine</h1><p>为你的Hexo加上评论系统-Valine<br><a href="https://blog.csdn.net/blue_zy/article/details/79071414">https://blog.csdn.net/blue_zy/article/details/79071414</a></p><h1 id="REMOTE-REJECTED-MASTER"><a href="#REMOTE-REJECTED-MASTER" class="headerlink" title="[REMOTE REJECTED] MASTER"></a>[REMOTE REJECTED] MASTER</h1><p>GIT PULL 错误：[REMOTE REJECTED] MASTER -&gt; MASTER (PRE-RECEIVE HOOK DECLINED)<br>解决办法：关闭分支的保护机制<br><a href="https://www.freesion.com/article/7986556587/">https://www.freesion.com/article/7986556587/</a></p><h1 id="博客菜单显示中文的设置方法："><a href="#博客菜单显示中文的设置方法：" class="headerlink" title="博客菜单显示中文的设置方法："></a>博客菜单显示中文的设置方法：</h1><p>1、在博客根目录的_config.yml文件中，找到language项改为zh-CN。<br>2、主题目录的_config.yml文件中，找到language项改为zh-CN。<br>注：部分主题的_config.yml文件中没有language项的设置。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;使用Hexo-Github搭建博客&quot;&gt;&lt;a href=&quot;#使用Hexo-Github搭建博客&quot; class=&quot;headerlink&quot; title=&quot;使用Hexo+Github搭建博客&quot;&gt;&lt;/a&gt;使用Hexo+Github搭建博客&lt;/h1&gt;&lt;p&gt;使用 Hexo+GitHub 搭建个人免费博客教程（小白向）&lt;br&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/60578464&quot;&gt;https://zhuanlan.zhihu.com/p/60578464&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;hexo常用命令&quot;&gt;&lt;a href=&quot;#hexo常用命令&quot; class=&quot;headerlink&quot; title=&quot;hexo常用命令&quot;&gt;&lt;/a&gt;hexo常用命令&lt;/h1&gt;&lt;p&gt;hexo new “name”       # 新建文章&lt;br&gt;hexo new page “name”  # 新建页面&lt;br&gt;hexo g                # 生成页面&lt;br&gt;hexo d                # 部署&lt;br&gt;hexo g -d             # 生成页面并部署&lt;br&gt;hexo s                # 本地预览&lt;br&gt;hexo clean            # 清除缓存和已生成的静态文件&lt;br&gt;hexo help             # 帮助&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Github使用" scheme="https://ptshucn.gitee.io/categories/Github%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="Hexo" scheme="https://ptshucn.gitee.io/tags/Hexo/"/>
+    
+    <category term="Github" scheme="https://ptshucn.gitee.io/tags/Github/"/>
+    
+    <category term="搭建" scheme="https://ptshucn.gitee.io/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的域名</title>
+    <link href="https://ptshucn.gitee.io/2022/08/08/%E6%88%91%E7%9A%84%E5%9F%9F%E5%90%8D/"/>
+    <id>https://ptshucn.gitee.io/2022/08/08/%E6%88%91%E7%9A%84%E5%9F%9F%E5%90%8D/</id>
+    <published>2022-08-08T11:58:41.000Z</published>
+    <updated>2022-08-16T14:18:28.616Z</updated>
+    
+    <content type="html"><![CDATA[<p>原始域名：ptshu.github.io<br>绑定域名：<a href="http://www.ptsh.cf/">www.ptsh.cf</a><br>管理地址：<a href="https://github.com/ptshu/">https://github.com/ptshu/</a></p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;原始域名：ptshu.github.io&lt;br&gt;绑定域名：&lt;a href=&quot;http://www.ptsh.cf/&quot;&gt;www.ptsh.cf&lt;/a&gt;&lt;br&gt;管理地址：&lt;a href=&quot;https://github.com/ptshu/&quot;&gt;https://github.com/ptshu/&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Github使用" scheme="https://ptshucn.gitee.io/categories/Github%E4%BD%BF%E7%94%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://ptshucn.gitee.io/2022/08/05/hello-world/"/>
+    <id>https://ptshucn.gitee.io/2022/08/05/hello-world/</id>
+    <published>2022-08-05T12:03:03.000Z</published>
+    <updated>2022-08-16T12:46:24.837Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>添加分类和标签后的文章</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><span id="more"></span><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;添加分类和标签后的文章&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>
