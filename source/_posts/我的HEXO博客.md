@@ -54,7 +54,11 @@ git config -l
 
 #  github用户申请专属token(个人令牌)
 Settings => Developer Settings => Personal access tokens
-如：ghp_YtdiutIzUSJw1aBftZmD和谐一下TGBQROg3Rh3pLH24
+如：
+git-to-hexo@token
+ghp_YtdiutIzUSJw1aBftZmD和谐一下TGBQROg3Rh3pLH24
+picx@token
+ghp_ObXvJO6jrjhHcMhI和谐一下Ug8UeT9y210ZJN3O2sPM
 
 
 #  Github添加密匙：
