@@ -76,6 +76,7 @@ git remote add origin <你的项目地址>
 
 已存在远程仓库，则修改远程仓库命令
 git remote set-url origin <你的项目地址>
+git remote set-url origin git@gitee.com:ptsh/hexo.git
 （项目ptsh存放hexo 博客，项目ptshucn存放hexo 源文件）
 
 （5）最后就是基本的推送命令了。
