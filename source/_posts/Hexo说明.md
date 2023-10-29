@@ -1,8 +1,8 @@
 ---
-title: Hexo+Github搭建博客
+title: Hexo说明
 date: 2022-08-08 20:03:03
 categories: 
-- Github使用
+- Hexo
 tags: 
 - Hexo
 - Github

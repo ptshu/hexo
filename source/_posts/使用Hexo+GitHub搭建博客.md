@@ -1,5 +1,5 @@
 ---
-title: 我的HEXO博客
+title: 使用Hexo+GitHub搭建博客
 date: 2022-12-02 19:58:41
 categories: 
 - hexo
@@ -9,7 +9,6 @@ top: 2
 #  HEXO博客信息
 博客仓库名：ptshu.github.io
 备份仓库名：hexo
-绑定域名：www.ptsh.cf
 管理地址：https://github.com/ptshu/
 #  Hexo连接 Github(博客)
 <!--more-->
@@ -74,23 +73,3 @@ Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击
 打开 Git Bash，输入 ssh -T git@github.com 出现 “Are you sure……”，输入 yes 回车确认。
 
 显示 “Hi xxx! You've successfully……” 即连接成功。
-
-#  hexo连接 Gitee
-
-修改根目录_config.yml配置
-deploy:
-type: git
-repo: https://gitee.com/ptshucn/ptshucn.git （将地址换成自己的地址）
-branch: master
-
-然后在blog的根目录执行命令：
-
-npm install hexo-deployer-git --save # 安装git插件
-
-git config --global user.email zskang@qq.com # 设置gitee邮箱（gitee的注册邮箱）
-
-git config --global user.name ‘ptshucn’ # 设置用户名（git的注册昵称）
-
-hexo deploy # 上传到gitee
-
-然后选择gitee pages服务，然后选择开启 或 更新即可。

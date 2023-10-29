@@ -1,4 +1,4 @@
-Git的使用：连接Gitee和推送到远程库
+部署Gitee的Git和Hexo
 第一步：下载安装git
 Git下载链接：https://www.git-scm.com/download/
 安装时选择哪些选项，建议百度，或者照着视频安装。
@@ -108,6 +108,31 @@ git push origin master
 则再将本地的文件提交到本地仓库，再到远程仓库，即(orgin是添加在git 的远程仓库名， master是远程仓库当当前所在的分支）：
 
 git add .
-git commit -m “xx”
+git commit -m “ptshucn”
 git pull origin master --allow-unrelated-histories
 git push origin master
+
+
+
+
+部署Hexo到Gitee
+修改根目录_config.yml配置
+deploy:
+type: git
+repo: https://gitee.com/ptsh/ptsh.git （将地址换成自己的地址）
+branch: master
+
+然后在blog的根目录执行命令：
+
+npm install hexo-deployer-git –save # 安装git插件
+
+git config –global user.email zskang@qq.com # 设置gitee邮箱（gitee的注册邮箱）
+
+git config –global user.name ‘ptsh’ # 设置用户名（git的注册昵称）
+
+hexo deploy # 上传到gitee
+
+然后选择gitee pages服务，然后选择开启 或 更新即可。
+
+网络教程：使用 Hexo+GitHub 搭建个人免费博客教程（小白向）
+https://zhuanlan.zhihu.com/p/60578464
