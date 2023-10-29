@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 # ptshucn
 
 #### Description
 {**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+=======
+# hexo
+
+#### Description
+hexo源文件
+>>>>>>> a7fb021b90fed6945ef4a7e7e9b2f7bc518d2caf
 
 #### Software Architecture
 Software architecture description
