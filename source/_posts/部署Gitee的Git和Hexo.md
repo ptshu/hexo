@@ -1,6 +1,7 @@
 ---
 title: 部署Gitee的Git和Hexo
 date: 2023-10-29 19:58:41
+comments: false
 categories: 
 - hexo
 - Gitee

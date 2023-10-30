@@ -115,3 +115,15 @@ branch: master
 
 更改完远程仓库链接，第一次使用Git的clone或者push命令连接Gitee时，会得到一个警告。
 这是因为Git使用SSH连接，而SSH连接在第一次验证Gitee服务器的Key时，需要你确认Gitee的Key的指纹信息是否真的来自Gitee的服务器，输入yes回车即可。Git会输出一个警告，告诉你已经把Gitee的Key添加到本机的一个信任列表里了：这个警告只会出现一次，后面的操作就不会有任何警告了。
+
+
+#  Valine禁止某页面评论
+在 Hexo 博客中，评论的功能在所有页面都默认开启，但是有的时候我们在页面上不需要显示评论功能，例如分类，标记页面我们并不需要评论功能。通过comments属性设置true或false控制该页面或者是文章的评论功能是否打开，如下：
+---
+title: Tags
+date: 2019-12-19 16:10:19
+type: "tags"
+comments: false
+---
+
+
