@@ -3,6 +3,7 @@ title: 使用Hexo+GitHub搭建博客
 date: 2022-12-02 19:58:41
 categories: 
 - hexo
+- GitHub
 tags:
 top: 2
 ---
@@ -20,17 +21,6 @@ git config --global user.email "zskang@qq.com"
 ssh-keygen -t rsa -C  "zskang@qq.com"
 验证连接：
 ssh -T git@github.com
-
-hexo常用命令
-hexo new "name"       # 新建文章
-hexo new page "name"  # 新建页面
-hexo g                # 生成页面
-hexo d                # 部署
-hexo g -d             # 生成页面并部署
-hexo s                # 本地预览
-hexo clean            # 清除缓存和已生成的静态文件
-hexo help             # 帮助
-
 
 #  Git连接 Github(备份)
 设置用户名、邮箱和仓库：
@@ -73,3 +63,6 @@ Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击
 打开 Git Bash，输入 ssh -T git@github.com 出现 “Are you sure……”，输入 yes 回车确认。
 
 显示 “Hi xxx! You've successfully……” 即连接成功。
+
+
+

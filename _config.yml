@@ -103,7 +103,7 @@ theme: BlueLake
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: https://gitee.com/ptsh/ptsh.git
+  repository: git@gitee.com:ptsh/ptsh.git
   branch: master
 
 # Extensions
